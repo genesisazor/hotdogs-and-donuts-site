@@ -173,16 +173,6 @@
   animation: fade-up 0.8s var(--ease-out-expo) both;
 }
 
-@utility font-display {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-
-@utility font-mono {
-  font-family: var(--font-mono);
-}
-
 @utility btn-primary {
   display: inline-flex;
   align-items: center;
