@@ -77,18 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Clementine — Sun-Drenched Trattoria & Wine Bar" },
+      { title: "Hot Dogs & Donuts — Snack Shop" },
       {
         name: "description",
         content:
-          "Clementine serves seasonal California soul food in a sun-drenched garden. Book a table, browse the menu, and visit us in Silver Lake.",
+          "Hot Dogs & Donuts is a chunky, cheerful snack shop serving classic dogs, chili cheese dogs, and hand-glazed donuts. Order pickup or visit us daily.",
       },
-      { name: "theme-color", content: "#e0603a" },
-      { property: "og:title", content: "Clementine — Sun-Drenched Trattoria" },
+      { name: "theme-color", content: "#F6EED4" },
+      { property: "og:title", content: "Hot Dogs & Donuts — Snack Shop" },
       {
         property: "og:description",
         content:
-          "Seasonal California soul in a sun-drenched garden. Fresh, punchy, unpretentious.",
+          "Classic dogs, chili cheese dogs, and hand-glazed donuts. Made fresh every day.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -107,7 +107,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap",
       },
     ],
   }),
