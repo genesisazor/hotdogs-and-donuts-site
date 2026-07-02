@@ -59,43 +59,47 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Anton", "Inter", sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Fredoka", "Inter", system-ui, sans-serif;
+  --font-body: "Nunito", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --color-brand-primary: var(--brand-primary);
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-cream: var(--brand-cream);
   --color-brand-ink: var(--brand-ink);
   --color-brand-leaf: var(--brand-leaf);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-orange: var(--brand-orange);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  --radius: 0.625rem;
-  /* Playful trattoria palette */
-  --brand-cream: oklch(0.975 0.02 80);           /* warm off-white */
-  --brand-ink: oklch(0.22 0.04 40);               /* deep warm brown */
-  --brand-primary: oklch(0.66 0.19 40);           /* vivid tomato/orange */
-  --brand-secondary: oklch(0.82 0.16 90);         /* sunny amber */
-  --brand-leaf: oklch(0.55 0.14 145);             /* basil green */
+  --radius: 1rem;
+  /* Hot Dogs & Donuts — chunky cartoon palette */
+  --brand-cream: oklch(0.955 0.045 92);          /* #F6EED4 warm cream */
+  --brand-ink: oklch(0.24 0.06 265);              /* #17203E deep navy */
+  --brand-primary: oklch(0.63 0.22 27);           /* #DC2E2E ketchup red */
+  --brand-secondary: oklch(0.85 0.16 90);         /* mustard yellow */
+  --brand-pink: oklch(0.68 0.22 355);             /* #E5378A hot pink */
+  --brand-orange: oklch(0.72 0.19 55);            /* #F58020 orange */
+  --brand-leaf: oklch(0.55 0.14 145);
   --background: var(--brand-cream);
   --foreground: var(--brand-ink);
-  --card: oklch(1 0 0);
+  --card: oklch(0.99 0.015 92);
   --card-foreground: var(--brand-ink);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--brand-ink);
   --primary: var(--brand-primary);
   --primary-foreground: oklch(0.985 0.01 80);
-  --secondary: var(--brand-secondary);
+  --secondary: var(--brand-pink);
   --secondary-foreground: var(--brand-ink);
-  --muted: oklch(0.94 0.02 70);
-  --muted-foreground: oklch(0.42 0.03 40);
-  --accent: var(--brand-leaf);
+  --muted: oklch(0.93 0.03 88);
+  --muted-foreground: oklch(0.38 0.05 265);
+  --accent: var(--brand-orange);
   --accent-foreground: oklch(0.985 0.01 80);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.22 0.04 40 / 0.12);
-  --input: oklch(0.22 0.04 40 / 0.12);
+  --border: oklch(0.24 0.06 265 / 0.15);
+  --input: oklch(0.24 0.06 265 / 0.2);
   --ring: var(--brand-primary);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -183,9 +187,10 @@
   background: var(--brand-primary);
   color: var(--primary-foreground);
   font-weight: 700;
+  border: 2px solid var(--brand-ink);
   transition: transform 0.2s var(--ease-out-expo), box-shadow 0.2s;
-  box-shadow: 0 8px 20px -8px oklch(0.66 0.19 40 / 0.5);
-  &:hover { transform: translateY(-2px); }
+  box-shadow: 0 4px 0 0 var(--brand-ink);
+  &:hover { transform: translateY(-2px); box-shadow: 0 6px 0 0 var(--brand-ink); }
   &:active { transform: scale(0.97); }
 }
 
@@ -196,10 +201,18 @@
   min-height: 48px;
   padding-inline: 1.75rem;
   border-radius: 9999px;
-  background: white;
+  background: var(--brand-cream);
   color: var(--brand-ink);
-  border: 1px solid var(--border);
+  border: 2px solid var(--brand-ink);
   font-weight: 600;
+  box-shadow: 0 4px 0 0 var(--brand-ink);
   transition: transform 0.2s var(--ease-out-expo);
-  &:hover { transform: translateY(-2px); }
+  &:hover { transform: translateY(-2px); box-shadow: 0 6px 0 0 var(--brand-ink); }
+}
+
+@utility card-outline {
+  border: 2px solid var(--brand-ink);
+  border-radius: 1.5rem;
+  background: var(--brand-cream);
+  box-shadow: 0 6px 0 0 var(--brand-ink);
 }
