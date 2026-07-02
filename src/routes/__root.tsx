@@ -92,6 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Hot Dogs & Donuts — Snack Shop" },
+      { name: "description", content: "This application delivers a mobile-first, responsive web experience that adapts seamlessly across all devices." },
+      { property: "og:description", content: "This application delivers a mobile-first, responsive web experience that adapts seamlessly across all devices." },
+      { name: "twitter:description", content: "This application delivers a mobile-first, responsive web experience that adapts seamlessly across all devices." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0e00d685-f78e-4819-9bc5-87b8315f50a1/id-preview-4ed2d40d--e7cda460-2686-4f48-a1c9-ec7cc039203a.lovable.app-1782956114324.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0e00d685-f78e-4819-9bc5-87b8315f50a1/id-preview-4ed2d40d--e7cda460-2686-4f48-a1c9-ec7cc039203a.lovable.app-1782956114324.png" },
     ],
     links: [
       {
