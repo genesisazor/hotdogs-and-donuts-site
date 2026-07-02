@@ -1,14 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, MapPin, Clock, Phone, Instagram, ArrowRight } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
-import dishOctopus from "@/assets/dish-octopus.jpg";
-import dishBurrata from "@/assets/dish-burrata.jpg";
-import dishPasta from "@/assets/dish-pasta.jpg";
-import dishPizza from "@/assets/dish-pizza.jpg";
-import storyChef from "@/assets/story-chef.jpg";
-import galleryInterior from "@/assets/gallery-interior.jpg";
-import galleryDrink from "@/assets/gallery-drink.jpg";
+import logoAsset from "@/assets/hotdogs-donuts-logo.asset.json";
+import patternTile from "@/assets/pattern-tile.jpg";
+import itemClassic from "@/assets/item-classic-dog.jpg";
+import itemChili from "@/assets/item-chili-dog.jpg";
+import itemSprinkle from "@/assets/item-sprinkle-donut.jpg";
+import itemChoco from "@/assets/item-choco-donut.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -20,31 +18,11 @@ const NAV = [
   { href: "#visit", label: "Visit" },
 ];
 
-const DISHES = [
-  {
-    img: dishOctopus,
-    name: "Charred Octopus",
-    desc: "Romesco, citrus lace, chili oil",
-    price: "24",
-  },
-  {
-    img: dishBurrata,
-    name: "Sun-Gold Burrata",
-    desc: "Heirloom tomato, basil, sourdough crumble",
-    price: "18",
-  },
-  {
-    img: dishPasta,
-    name: "Wild Mushroom Pappardelle",
-    desc: "Foraged mushrooms, aged parmesan, thyme",
-    price: "26",
-  },
-  {
-    img: dishPizza,
-    name: "Margherita di Bufala",
-    desc: "San Marzano, buffalo mozzarella, wood fire",
-    price: "22",
-  },
+const ITEMS = [
+  { img: itemClassic, name: "Classic Dog", desc: "All-beef, snappy bun, yellow mustard zigzag", price: "6", tint: "bg-brand-orange/15" },
+  { img: itemChili, name: "Chili Cheese Dog", desc: "House chili, molten cheddar, crispy onions", price: "8", tint: "bg-brand-primary/15" },
+  { img: itemSprinkle, name: "Sprinkle Party", desc: "Vanilla glaze, rainbow sprinkles, pure joy", price: "4", tint: "bg-brand-pink/15" },
+  { img: itemChoco, name: "Choco Glaze", desc: "Belgian chocolate glaze, brioche dough", price: "4", tint: "bg-brand-secondary/25" },
 ];
 
 function Index() {
@@ -66,8 +44,7 @@ function Index() {
   }, [open]);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground selection:bg-primary/20">
-      {/* Skip link for a11y */}
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground selection:bg-primary/25">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
@@ -79,7 +56,7 @@ function Index() {
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           scrolled
-            ? "border-b border-border bg-background/85 backdrop-blur-md"
+            ? "border-b-2 border-brand-ink bg-background/90 backdrop-blur-md"
             : "bg-transparent"
         }`}
       >
@@ -87,24 +64,26 @@ function Index() {
           aria-label="Primary"
           className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:h-20 sm:px-8"
         >
-          <a
-            href="#top"
-            className="font-display text-2xl uppercase tracking-tight text-primary sm:text-3xl"
-          >
-            Clementine
+          <a href="#top" className="flex min-w-0 items-center gap-2 font-display text-xl font-bold tracking-tight text-brand-ink sm:text-2xl">
+            <span className="inline-grid h-9 w-9 shrink-0 place-items-center rounded-full border-2 border-brand-ink bg-brand-primary text-brand-cream">
+              🌭
+            </span>
+            <span className="truncate">
+              Hot Dogs <span className="text-brand-pink">&amp;</span> Donuts
+            </span>
           </a>
           <div className="hidden items-center gap-8 md:flex">
             {NAV.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
-                className="text-sm font-semibold uppercase tracking-widest text-foreground/80 transition-colors hover:text-primary"
+                className="text-sm font-bold uppercase tracking-widest text-brand-ink/80 transition-colors hover:text-brand-primary"
               >
                 {n.label}
               </a>
             ))}
-            <a href="#reserve" className="btn-primary text-sm">
-              Book a Table
+            <a href="#order" className="btn-primary text-sm">
+              Order Pickup
             </a>
           </div>
           <button
@@ -113,16 +92,15 @@ function Index() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-11 w-11 place-items-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/15 md:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full border-2 border-brand-ink bg-brand-cream text-brand-ink transition-colors hover:bg-brand-secondary/30 md:hidden"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </nav>
 
-        {/* Mobile drawer */}
         <div
           id="mobile-menu"
-          className={`md:hidden ${open ? "block" : "hidden"} border-t border-border bg-background`}
+          className={`md:hidden ${open ? "block" : "hidden"} border-t-2 border-brand-ink bg-background`}
         >
           <div className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4">
             {NAV.map((n) => (
@@ -130,17 +108,17 @@ function Index() {
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="flex min-h-11 items-center rounded-xl px-3 text-lg font-semibold text-foreground hover:bg-primary/5"
+                className="flex min-h-11 items-center rounded-xl px-3 text-lg font-bold text-brand-ink hover:bg-brand-secondary/25"
               >
                 {n.label}
               </a>
             ))}
             <a
-              href="#reserve"
+              href="#order"
               onClick={() => setOpen(false)}
               className="btn-primary mt-2 w-full"
             >
-              Book a Table
+              Order Pickup
             </a>
           </div>
         </div>
@@ -148,73 +126,77 @@ function Index() {
 
       <main id="main">
         {/* Hero */}
-        <section id="top" className="relative px-5 pb-16 pt-8 sm:px-8 sm:pt-16 lg:pt-24">
-          <div className="mx-auto flex max-w-6xl flex-col items-center text-center lg:grid lg:grid-cols-2 lg:items-center lg:gap-14 lg:text-left">
-            <div className="animate-fade-up max-w-xl">
-              <span className="inline-block rounded-full bg-secondary/40 px-4 py-1 font-mono text-xs uppercase tracking-widest text-brand-ink/70">
-                Silver Lake · Est. 2019
-              </span>
-              <h1 className="mt-5 font-display text-[13vw] uppercase leading-[0.9] tracking-tight text-balance sm:text-7xl lg:text-8xl">
-                Bright Flavors,
-                <br />
-                <span className="text-primary">Wild Hearts.</span>
-              </h1>
-              <p className="mx-auto mt-5 max-w-md text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
-                Seasonal California soul served in a sun-drenched garden.
-                Fresh, punchy, and unpretentious.
+        <section
+          id="top"
+          className="relative px-4 pb-16 pt-6 sm:px-8 sm:pt-12"
+        >
+          <div
+            className="card-outline relative mx-auto max-w-6xl overflow-hidden px-5 py-12 sm:px-10 sm:py-16 lg:py-24"
+            style={{
+              backgroundImage: `url(${patternTile})`,
+              backgroundSize: "320px auto",
+              backgroundRepeat: "repeat",
+              backgroundColor: "var(--brand-cream)",
+            }}
+          >
+            {/* Cream wash so text stays legible over pattern */}
+            <div className="pointer-events-none absolute inset-0 bg-brand-cream/55" />
+            <div className="relative animate-fade-up mx-auto flex max-w-2xl flex-col items-center text-center">
+              <img
+                src={logoAsset.url}
+                alt="Hot Dogs & Donuts logo"
+                width={1200}
+                height={400}
+                fetchPriority="high"
+                className="w-full max-w-[520px] drop-shadow-[0_4px_0_rgba(23,32,62,0.25)]"
+              />
+              <p className="mt-6 max-w-md text-pretty text-base font-semibold leading-relaxed text-brand-ink/80 sm:text-lg">
+                A chunky little snack shop serving classic dogs, chili cheese dogs, and hand-glazed donuts — made fresh every single day.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:justify-start sm:justify-center">
-                <a href="#reserve" className="btn-primary">
-                  Book a Table
+              <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                <a href="#order" className="btn-primary">
+                  Order Pickup
                 </a>
                 <a href="#menu" className="btn-secondary">
-                  View Menu
+                  See the Menu
                 </a>
               </div>
-            </div>
-            <div className="mt-12 w-full animate-fade-up lg:mt-0" style={{ animationDelay: "150ms" }}>
-              <div className="overflow-hidden rounded-3xl shadow-xl ring-1 ring-black/5">
-                <img
-                  src={heroImg}
-                  alt="Colorful Mediterranean small plates on marble"
-                  width={1280}
-                  height={960}
-                  fetchPriority="high"
-                  className="aspect-[4/3] w-full object-cover"
-                />
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-widest text-brand-ink/70">
+                <span className="inline-flex items-center gap-1.5"><MapPin size={14} /> Open Today</span>
+                <span className="inline-flex items-center gap-1.5"><Clock size={14} /> 11am – 10pm</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Menu */}
-        <section id="menu" className="bg-white px-5 py-20 sm:px-8 sm:py-24">
+        <section id="menu" className="px-5 py-16 sm:px-8 sm:py-24">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 flex items-end justify-between gap-4 sm:mb-14">
               <div className="min-w-0">
-                <span className="font-mono text-xs uppercase tracking-widest text-primary">
-                  [ Seasonal ]
+                <span className="font-mono text-xs uppercase tracking-widest text-brand-pink">
+                  [ Snack Menu ]
                 </span>
-                <h2 className="mt-2 font-display text-4xl uppercase tracking-tight sm:text-5xl">
-                  The Stars
+                <h2 className="mt-2 font-display text-4xl font-bold leading-none tracking-tight text-brand-ink sm:text-6xl">
+                  The <span className="text-brand-primary">Hits</span>.
                 </h2>
               </div>
               <a
-                href="#reserve"
-                className="hidden shrink-0 items-center gap-1 text-sm font-semibold uppercase tracking-widest text-primary hover:underline sm:inline-flex"
+                href="#order"
+                className="hidden shrink-0 items-center gap-1 text-sm font-bold uppercase tracking-widest text-brand-primary hover:underline sm:inline-flex"
               >
-                Full menu <ArrowRight size={16} />
+                Order now <ArrowRight size={16} />
               </a>
             </div>
 
-            <ul className="grid gap-8 sm:grid-cols-2 lg:gap-10">
-              {DISHES.map((d, i) => (
+            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+              {ITEMS.map((d, i) => (
                 <li
                   key={d.name}
-                  className="group animate-fade-up"
+                  className="animate-fade-up card-outline group flex flex-col overflow-hidden"
                   style={{ animationDelay: `${i * 80}ms` }}
                 >
-                  <div className="overflow-hidden rounded-2xl bg-stone-100">
+                  <div className={`overflow-hidden border-b-2 border-brand-ink ${d.tint}`}>
                     <img
                       src={d.img}
                       alt={d.name}
@@ -222,15 +204,15 @@ function Index() {
                       decoding="async"
                       width={800}
                       height={800}
-                      className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="aspect-square w-full object-contain p-6 transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-                  <div className="mt-4 flex items-start justify-between gap-4">
+                  <div className="flex flex-1 items-start justify-between gap-3 p-4 sm:p-5">
                     <div className="min-w-0">
-                      <h3 className="truncate text-lg font-bold sm:text-xl">{d.name}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">{d.desc}</p>
+                      <h3 className="font-display text-lg font-bold text-brand-ink sm:text-xl">{d.name}</h3>
+                      <p className="mt-1 text-sm font-medium text-brand-ink/70">{d.desc}</p>
                     </div>
-                    <span className="shrink-0 font-mono text-lg font-bold text-primary">
+                    <span className="shrink-0 rounded-full border-2 border-brand-ink bg-brand-secondary px-2.5 py-1 font-display text-sm font-bold text-brand-ink">
                       ${d.price}
                     </span>
                   </div>
@@ -241,185 +223,122 @@ function Index() {
         </section>
 
         {/* Story */}
-        <section id="story" className="bg-secondary/25 px-5 py-24 sm:px-8">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="order-2 lg:order-1">
-              <div className="overflow-hidden rounded-3xl shadow-lg">
-                <img
-                  src={storyChef}
-                  alt="Chef in the Clementine kitchen"
-                  loading="lazy"
-                  decoding="async"
-                  width={1200}
-                  height={800}
-                  className="aspect-[4/3] w-full object-cover"
-                />
+        <section
+          id="story"
+          className="relative px-5 py-20 sm:px-8 sm:py-24"
+        >
+          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-5 lg:gap-16">
+            <div className="lg:col-span-2">
+              <div
+                className="card-outline aspect-square w-full overflow-hidden"
+                style={{
+                  backgroundImage: `url(${patternTile})`,
+                  backgroundSize: "220px auto",
+                }}
+              >
+                <div className="flex h-full w-full items-center justify-center bg-brand-pink/25 p-8 text-8xl sm:text-9xl">
+                  🌭
+                </div>
               </div>
             </div>
-            <div className="order-1 max-w-lg lg:order-2">
-              <span className="font-mono text-xs uppercase tracking-widest text-primary">
-                Our Philosophy
+            <div className="max-w-lg lg:col-span-3">
+              <span className="font-mono text-xs uppercase tracking-widest text-brand-orange">
+                Since 2019
               </span>
-              <h2 className="mt-3 font-display text-4xl uppercase leading-none tracking-tight sm:text-5xl">
-                From the earth, to the table.
+              <h2 className="mt-3 font-display text-4xl font-bold leading-none tracking-tight text-brand-ink sm:text-6xl">
+                Two treats. <br />
+                <span className="text-brand-pink">One tiny counter.</span>
               </h2>
-              <p className="mt-5 text-pretty text-base leading-relaxed text-foreground/80 sm:text-lg">
-                We believe in ingredients that speak for themselves. No fuss,
-                just the honest glow of California produce and the warmth of
-                a shared meal. Our menu changes with the season and whatever
-                showed up beautiful at the market that morning.
+              <p className="mt-5 text-pretty text-base font-medium leading-relaxed text-brand-ink/80 sm:text-lg">
+                We fell in love with the corner snack stands of our childhoods — the smell of a griddle, a warm glazed donut in wax paper. So we opened one. No fuss, just the two things we love most, made carefully every day.
               </p>
-              <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-                <Stat n="12" label="Farms" />
-                <Stat n="6" label="Years" />
-                <Stat n="1" label="Wood oven" />
+              <div className="mt-8 grid grid-cols-3 gap-3 text-center sm:gap-4">
+                <Stat n="24" label="Dog styles" />
+                <Stat n="12" label="Donut flavors" />
+                <Stat n="1" label="Tiny counter" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Gallery */}
-        <section aria-label="Gallery" className="px-5 py-20 sm:px-8">
-          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-            {[
-              { src: galleryInterior, alt: "Sun-drenched dining room" },
-              { src: dishPizza, alt: "Wood-fired pizza" },
-              { src: galleryDrink, alt: "Citrus cocktail at the bar" },
-              { src: dishBurrata, alt: "Burrata plate" },
-            ].map((g) => (
-              <div key={g.alt} className="overflow-hidden rounded-2xl">
-                <img
-                  src={g.src}
-                  alt={g.alt}
-                  loading="lazy"
-                  decoding="async"
-                  width={800}
-                  height={800}
-                  className="aspect-square w-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Visit / Reserve */}
-        <section id="visit" className="bg-brand-ink px-5 py-20 text-brand-cream sm:px-8 sm:py-24">
+        {/* Visit + Order */}
+        <section
+          id="visit"
+          className="relative px-5 py-20 text-brand-cream sm:px-8 sm:py-24"
+          style={{ backgroundColor: "var(--brand-ink)" }}
+        >
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-secondary">
-                Visit Us
+              <span className="font-mono text-xs uppercase tracking-widest text-brand-secondary">
+                Come Say Hi
               </span>
-              <h2 className="mt-3 font-display text-4xl uppercase tracking-tight sm:text-5xl">
-                Find Us
+              <h2 className="mt-3 font-display text-4xl font-bold leading-none tracking-tight sm:text-6xl">
+                Find <span className="text-brand-orange">the counter</span>.
               </h2>
               <dl className="mt-8 space-y-6 text-base sm:text-lg">
-                <div className="flex gap-4">
-                  <MapPin className="mt-1 shrink-0 text-secondary" size={22} />
-                  <div className="min-w-0">
-                    <dt className="font-mono text-xs uppercase tracking-widest text-brand-cream/60">
-                      Address
-                    </dt>
-                    <dd className="mt-1 font-medium">
-                      1208 Clementine Way
-                      <br />
-                      Silver Lake, CA 90026
-                    </dd>
+                <Info icon={<MapPin size={22} />} label="Address">
+                  1208 Sprinkle Lane
+                  <br />
+                  Los Angeles, CA 90026
+                </Info>
+                <Info icon={<Clock size={22} />} label="Hours">
+                  <div className="space-y-1">
+                    <Row l="Mon – Thu" r="11 – 10 pm" />
+                    <Row l="Fri – Sat" r="11 – 12 am" />
+                    <Row l="Sunday" r="10 – 8 pm" />
                   </div>
-                </div>
-                <div className="flex gap-4">
-                  <Clock className="mt-1 shrink-0 text-secondary" size={22} />
-                  <div className="min-w-0">
-                    <dt className="font-mono text-xs uppercase tracking-widest text-brand-cream/60">
-                      Hours
-                    </dt>
-                    <dd className="mt-1 space-y-1">
-                      <div className="flex justify-between gap-6">
-                        <span>Tue – Thu</span>
-                        <span className="font-mono">5 – 10 pm</span>
-                      </div>
-                      <div className="flex justify-between gap-6">
-                        <span>Fri – Sat</span>
-                        <span className="font-mono">5 – 11 pm</span>
-                      </div>
-                      <div className="flex justify-between gap-6">
-                        <span>Sun brunch</span>
-                        <span className="font-mono">10 – 3 pm</span>
-                      </div>
-                      <div className="flex justify-between gap-6 text-brand-cream/60">
-                        <span>Monday</span>
-                        <span>Closed</span>
-                      </div>
-                    </dd>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <Phone className="mt-1 shrink-0 text-secondary" size={22} />
-                  <div className="min-w-0">
-                    <dt className="font-mono text-xs uppercase tracking-widest text-brand-cream/60">
-                      Reservations
-                    </dt>
-                    <dd className="mt-1">
-                      <a
-                        href="tel:+13235550129"
-                        className="font-medium underline underline-offset-4 hover:text-secondary"
-                      >
-                        (323) 555-0129
-                      </a>
-                    </dd>
-                  </div>
-                </div>
+                </Info>
+                <Info icon={<Phone size={22} />} label="Pickup">
+                  <a href="tel:+13235550129" className="underline underline-offset-4 hover:text-brand-orange">
+                    (323) 555-0129
+                  </a>
+                </Info>
               </dl>
             </div>
 
             <form
-              id="reserve"
+              id="order"
               onSubmit={(e) => e.preventDefault()}
-              className="rounded-3xl bg-brand-cream p-6 text-brand-ink shadow-xl sm:p-8"
+              className="rounded-3xl border-2 border-brand-cream/20 bg-brand-cream p-6 text-brand-ink shadow-[0_8px_0_0_rgba(0,0,0,0.35)] sm:p-8"
             >
-              <h3 className="font-display text-2xl uppercase tracking-tight sm:text-3xl">
-                Reserve a Table
+              <h3 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+                Order for Pickup
               </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                We'll confirm by text within the hour.
+              <p className="mt-2 text-sm font-medium text-brand-ink/70">
+                We'll text you when it's ready — usually under 15 minutes.
               </p>
               <div className="mt-6 grid gap-4">
                 <Field label="Name" id="r-name" type="text" autoComplete="name" />
                 <div className="grid grid-cols-2 gap-4">
-                  <Field label="Date" id="r-date" type="date" />
-                  <Field label="Time" id="r-time" type="time" />
+                  <Field label="Pickup date" id="r-date" type="date" />
+                  <Field label="Pickup time" id="r-time" type="time" />
                 </div>
-                <Field label="Party size" id="r-guests" type="number" min={1} max={12} defaultValue={2} />
+                <Field label="How many treats?" id="r-count" type="number" min={1} max={24} defaultValue={2} />
                 <Field label="Phone" id="r-phone" type="tel" autoComplete="tel" />
                 <button type="submit" className="btn-primary mt-2 w-full">
-                  Request Reservation
+                  Place Order
                 </button>
               </div>
             </form>
           </div>
         </section>
 
-        <footer className="border-t border-border bg-background px-5 py-12 sm:px-8">
+        <footer className="border-t-2 border-brand-ink bg-background px-5 py-12 sm:px-8">
           <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
-            <span className="font-display text-2xl uppercase tracking-tight text-primary">
-              Clementine
+            <span className="font-display text-xl font-bold text-brand-ink sm:text-2xl">
+              Hot Dogs <span className="text-brand-pink">&amp;</span> Donuts
             </span>
-            <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-4 text-sm">
               <a
                 href="#"
                 aria-label="Instagram"
-                className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 text-foreground/70 hover:text-primary"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-brand-ink px-4 font-bold text-brand-ink hover:bg-brand-pink hover:text-brand-cream"
               >
-                <Instagram size={18} /> Instagram
-              </a>
-              <a
-                href="mailto:hello@clementine.co"
-                className="min-h-11 text-foreground/70 hover:text-primary"
-              >
-                hello@clementine.co
+                <Instagram size={16} /> @hotdogsdonuts
               </a>
             </div>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              © 2026 Clementine Hospitality
+            <p className="font-mono text-xs uppercase tracking-widest text-brand-ink/60">
+              © 2026 Snack Shop Co.
             </p>
           </div>
         </footer>
@@ -430,11 +349,42 @@ function Index() {
 
 function Stat({ n, label }: { n: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-border bg-background/60 p-4">
-      <div className="font-display text-3xl text-primary sm:text-4xl">{n}</div>
-      <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+    <div className="card-outline p-4">
+      <div className="font-display text-3xl font-bold text-brand-primary sm:text-4xl">{n}</div>
+      <div className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-brand-ink/70">
         {label}
       </div>
+    </div>
+  );
+}
+
+function Info({
+  icon,
+  label,
+  children,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex gap-4">
+      <span className="mt-1 shrink-0 text-brand-orange">{icon}</span>
+      <div className="min-w-0">
+        <dt className="font-mono text-xs uppercase tracking-widest text-brand-cream/60">
+          {label}
+        </dt>
+        <dd className="mt-1 font-semibold">{children}</dd>
+      </div>
+    </div>
+  );
+}
+
+function Row({ l, r }: { l: string; r: string }) {
+  return (
+    <div className="flex justify-between gap-6">
+      <span>{l}</span>
+      <span className="font-mono text-brand-cream/80">{r}</span>
     </div>
   );
 }
@@ -449,14 +399,14 @@ function Field({ label, id, className, ...rest }: FieldProps) {
     <div className="min-w-0">
       <label
         htmlFor={id}
-        className="mb-1.5 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
+        className="mb-1.5 block font-mono text-[10px] font-bold uppercase tracking-widest text-brand-ink/70"
       >
         {label}
       </label>
       <input
         id={id}
         {...rest}
-        className={`h-12 w-full rounded-xl border border-border bg-white px-4 text-base text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20 ${className ?? ""}`}
+        className={`h-12 w-full rounded-xl border-2 border-brand-ink/80 bg-white px-4 text-base font-semibold text-brand-ink outline-none transition focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/25 ${className ?? ""}`}
       />
     </div>
   );
