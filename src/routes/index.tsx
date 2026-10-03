@@ -147,6 +147,7 @@ function Index() {
               backgroundSize: "320px auto",
               backgroundRepeat: "repeat",
               backgroundColor: "var(--brand-mustard)",
+              backgroundBlendMode: "multiply",
             }}
           >
             {/* Light wash retains the pattern while keeping the foreground legible */}
@@ -244,6 +245,8 @@ function Index() {
                 style={{
                   backgroundImage: `url(${patternTile})`,
                   backgroundSize: "220px auto",
+                  backgroundColor: "var(--brand-mustard)",
+                  backgroundBlendMode: "multiply",
                 }}
               >
                 <div className="flex h-full w-full items-center justify-center bg-brand-pink/25 p-8 text-8xl sm:text-9xl">
