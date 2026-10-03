@@ -63,35 +63,41 @@
   --font-body: "Nunito", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --color-brand-primary: var(--brand-primary);
-  --color-brand-mustard: var(--brand-mustard);
+  --color-brand-mint: var(--brand-mint);
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-cream: var(--brand-cream);
   --color-brand-ink: var(--brand-ink);
   --color-brand-leaf: var(--brand-leaf);
   --color-brand-pink: var(--brand-pink);
   --color-brand-orange: var(--brand-orange);
+  --color-brand-red-ink: var(--brand-red-ink);
+  --color-brand-orange-ink: var(--brand-orange-ink);
+  --color-brand-pink-ink: var(--brand-pink-ink);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
   --radius: 1rem;
-  /* Hot Dogs & Donuts — chunky cartoon palette */
+  /* Hot Dogs & Donuts, chunky cartoon palette */
   --brand-cream: oklch(0.955 0.045 92);          /* #F6EED4 warm cream */
-  --brand-mustard: #F2B51D;
+  --brand-mint: #98FBCB;
   --brand-ink: oklch(0.24 0.06 265);              /* #17203E deep navy */
   --brand-primary: oklch(0.63 0.22 27);           /* #DC2E2E ketchup red */
   --brand-secondary: oklch(0.85 0.16 90);         /* mustard yellow */
   --brand-pink: oklch(0.68 0.22 355);             /* #E5378A hot pink */
   --brand-orange: oklch(0.72 0.19 55);            /* #F58020 orange */
   --brand-leaf: oklch(0.55 0.14 145);
-  --background: var(--brand-mustard);
+  --brand-red-ink: oklch(0.43 0.2 27);
+  --brand-orange-ink: oklch(0.42 0.13 55);
+  --brand-pink-ink: oklch(0.43 0.18 355);
+  --background: var(--brand-mint);
   --foreground: var(--brand-ink);
   --card: oklch(0.99 0.015 92);
   --card-foreground: var(--brand-ink);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--brand-ink);
   --primary: var(--brand-primary);
-  --primary-foreground: oklch(0.985 0.01 80);
+  --primary-foreground: var(--brand-cream);
   --secondary: var(--brand-pink);
   --secondary-foreground: var(--brand-ink);
   --muted: oklch(0.93 0.03 88);
@@ -186,7 +192,7 @@
   min-height: 48px;
   padding-inline: 1.75rem;
   border-radius: 9999px;
-  background: var(--brand-primary);
+  background: var(--brand-red-ink);
   color: var(--primary-foreground);
   font-weight: 700;
   border: 2px solid var(--brand-ink);
