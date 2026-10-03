@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, MapPin, Clock, Phone, Instagram, ArrowRight } from "lucide-react";
-import logoAsset from "@/assets/hotdogs-donuts-logo.asset.json";
+import logo from "@/assets/hotdogs-donuts-lockup.png";
 import patternTile from "@/assets/pattern-tile.jpg";
 import itemClassic from "@/assets/item-classic-dog.jpg";
 import itemChili from "@/assets/item-chili-dog.jpg";
@@ -9,6 +9,16 @@ import itemSprinkle from "@/assets/item-sprinkle-donut.jpg";
 import itemChoco from "@/assets/item-choco-donut.jpg";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Hot Dogs & Donuts | Snack Shop" },
+      { name: "description", content: "Classic dogs, chili cheese dogs, and hand-glazed donuts made fresh every day at Hot Dogs & Donuts." },
+      { property: "og:title", content: "Hot Dogs & Donuts | Snack Shop" },
+      { property: "og:description", content: "Classic dogs, chili cheese dogs, and hand-glazed donuts made fresh every day." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
@@ -136,22 +146,23 @@ function Index() {
               backgroundImage: `url(${patternTile})`,
               backgroundSize: "320px auto",
               backgroundRepeat: "repeat",
-              backgroundColor: "var(--brand-cream)",
+              backgroundColor: "var(--brand-mustard)",
+              backgroundBlendMode: "multiply",
             }}
           >
-            {/* Cream wash so text stays legible over pattern */}
-            <div className="pointer-events-none absolute inset-0 bg-brand-cream/55" />
+            {/* Light wash retains the pattern while keeping the foreground legible */}
+            <div className="pointer-events-none absolute inset-0 bg-brand-mustard/35" />
             <div className="relative animate-fade-up mx-auto flex max-w-2xl flex-col items-center text-center">
               <img
-                src={logoAsset.url}
+                src={logo}
                 alt="Hot Dogs & Donuts logo"
-                width={1200}
-                height={400}
+                width={975}
+                height={235}
                 fetchPriority="high"
-                className="w-full max-w-[520px] drop-shadow-[0_4px_0_rgba(23,32,62,0.25)]"
+                className="w-full max-w-[520px]"
               />
-              <p className="mt-6 max-w-md text-pretty text-base font-semibold leading-relaxed text-brand-ink/80 sm:text-lg">
-                A chunky little snack shop serving classic dogs, chili cheese dogs, and hand-glazed donuts — made fresh every single day.
+              <p className="mt-6 max-w-md rounded-2xl border-2 border-brand-ink bg-brand-cream px-4 py-3 text-pretty text-base font-semibold leading-relaxed text-brand-ink sm:px-6 sm:py-4 sm:text-lg">
+                A chunky little snack shop serving classic dogs, chili cheese dogs, and hand-glazed donuts, made fresh every single day.
               </p>
               <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                 <a href="#order" className="btn-primary">
@@ -234,6 +245,8 @@ function Index() {
                 style={{
                   backgroundImage: `url(${patternTile})`,
                   backgroundSize: "220px auto",
+                  backgroundColor: "var(--brand-mustard)",
+                  backgroundBlendMode: "multiply",
                 }}
               >
                 <div className="flex h-full w-full items-center justify-center bg-brand-pink/25 p-8 text-8xl sm:text-9xl">
@@ -250,7 +263,7 @@ function Index() {
                 <span className="text-brand-pink">One tiny counter.</span>
               </h2>
               <p className="mt-5 text-pretty text-base font-medium leading-relaxed text-brand-ink/80 sm:text-lg">
-                We fell in love with the corner snack stands of our childhoods — the smell of a griddle, a warm glazed donut in wax paper. So we opened one. No fuss, just the two things we love most, made carefully every day.
+                We fell in love with the corner snack stands of our childhoods, the smell of a griddle, a warm glazed donut in wax paper. So we opened one. No fuss, just the two things we love most, made carefully every day.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-3 text-center sm:gap-4">
                 <Stat n="24" label="Dog styles" />
@@ -305,7 +318,7 @@ function Index() {
                 Order for Pickup
               </h3>
               <p className="mt-2 text-sm font-medium text-brand-ink/70">
-                We'll text you when it's ready — usually under 15 minutes.
+                We'll text you when it's ready, usually under 15 minutes.
               </p>
               <div className="mt-6 grid gap-4">
                 <Field label="Name" id="r-name" type="text" autoComplete="name" />

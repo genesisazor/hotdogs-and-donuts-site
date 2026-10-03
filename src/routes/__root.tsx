@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -34,11 +35,11 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    reportLovableError(error instanceof Error ? error : new Error(String(error)), { boundary: "tanstack_root_error_component" });
   }, [error]);
 
   return (
@@ -77,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Hot Dogs & Donuts — Snack Shop" },
+      { title: "Hot Dogs & Donuts | Snack Shop" },
       {
         name: "description",
         content:
           "Hot Dogs & Donuts is a chunky, cheerful snack shop serving classic dogs, chili cheese dogs, and hand-glazed donuts. Order pickup or visit us daily.",
       },
-      { name: "theme-color", content: "#F6EED4" },
-      { property: "og:title", content: "Hot Dogs & Donuts — Snack Shop" },
+      { name: "theme-color", content: "#F2B51D" },
+      { property: "og:title", content: "Hot Dogs & Donuts | Snack Shop" },
       {
         property: "og:description",
         content:
@@ -92,19 +93,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Hot Dogs & Donuts — Snack Shop" },
-      { name: "description", content: "This application delivers a mobile-first, responsive web experience that adapts seamlessly across all devices." },
-      { property: "og:description", content: "This application delivers a mobile-first, responsive web experience that adapts seamlessly across all devices." },
-      { name: "twitter:description", content: "This application delivers a mobile-first, responsive web experience that adapts seamlessly across all devices." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0e00d685-f78e-4819-9bc5-87b8315f50a1/id-preview-4ed2d40d--e7cda460-2686-4f48-a1c9-ec7cc039203a.lovable.app-1782956114324.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0e00d685-f78e-4819-9bc5-87b8315f50a1/id-preview-4ed2d40d--e7cda460-2686-4f48-a1c9-ec7cc039203a.lovable.app-1782956114324.png" },
+      { name: "twitter:title", content: "Hot Dogs & Donuts | Snack Shop" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
