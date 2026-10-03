@@ -146,7 +146,7 @@ function Index() {
               backgroundImage: `url(${patternTile})`,
               backgroundSize: "320px auto",
               backgroundRepeat: "repeat",
-              backgroundColor: "var(--brand-cream)",
+              backgroundColor: "var(--brand-mustard)",
             }}
           >
             {/* Light wash retains the pattern while keeping the foreground legible */}
