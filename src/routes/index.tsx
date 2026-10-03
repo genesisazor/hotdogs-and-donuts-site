@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, MapPin, Clock, Phone, Instagram, ArrowRight } from "lucide-react";
-import logo from "@/assets/hotdogs-donuts-lockup.png";
+import logo from "@/assets/hotdogs-donuts-sticker.png";
 import patternTile from "@/assets/pattern-tile.jpg";
 import itemClassic from "@/assets/item-classic-dog.jpg";
 import itemChili from "@/assets/item-chili-dog.jpg";
-import itemSprinkle from "@/assets/item-sprinkle-donut.jpg";
+import itemSprinkle from "@/assets/item-sprinkle-donut-cropped.jpg";
 import itemChoco from "@/assets/item-choco-donut.jpg";
 
 export const Route = createFileRoute("/")({
@@ -146,12 +146,11 @@ function Index() {
               backgroundImage: `url(${patternTile})`,
               backgroundSize: "320px auto",
               backgroundRepeat: "repeat",
-              backgroundColor: "var(--brand-mustard)",
-              backgroundBlendMode: "multiply",
+              backgroundColor: "var(--brand-cream)",
             }}
           >
-            {/* Light wash retains the pattern while keeping the foreground legible */}
-            <div className="pointer-events-none absolute inset-0 bg-brand-mustard/35" />
+            {/* Cream wash softens the original pink and white pattern without changing its colors. */}
+            <div className="pointer-events-none absolute inset-0 bg-brand-cream/45" />
             <div className="relative animate-fade-up mx-auto flex max-w-2xl flex-col items-center text-center">
               <img
                 src={logo}
@@ -172,7 +171,7 @@ function Index() {
                   See the Menu
                 </a>
               </div>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-widest text-brand-ink/70">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 rounded-full border-2 border-brand-ink bg-brand-cream px-4 py-2 font-mono text-xs font-semibold uppercase tracking-widest text-brand-ink sm:px-5">
                 <span className="inline-flex items-center gap-1.5"><MapPin size={14} /> Open Today</span>
                 <span className="inline-flex items-center gap-1.5"><Clock size={14} /> 11am – 10pm</span>
               </div>
@@ -185,7 +184,7 @@ function Index() {
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 flex items-end justify-between gap-4 sm:mb-14">
               <div className="min-w-0">
-                <span className="font-mono text-xs uppercase tracking-widest text-brand-pink">
+                <span className="font-mono text-xs uppercase tracking-widest text-brand-pink-ink">
                   [ Snack Menu ]
                 </span>
                 <h2 className="mt-2 font-display text-4xl font-bold leading-none tracking-tight text-brand-ink sm:text-6xl">
@@ -194,7 +193,7 @@ function Index() {
               </div>
               <a
                 href="#order"
-                className="hidden shrink-0 items-center gap-1 text-sm font-bold uppercase tracking-widest text-brand-primary hover:underline sm:inline-flex"
+                className="hidden shrink-0 items-center gap-1 text-sm font-bold uppercase tracking-widest text-brand-red-ink hover:underline sm:inline-flex"
               >
                 Order now <ArrowRight size={16} />
               </a>
@@ -245,8 +244,7 @@ function Index() {
                 style={{
                   backgroundImage: `url(${patternTile})`,
                   backgroundSize: "220px auto",
-                  backgroundColor: "var(--brand-mustard)",
-                  backgroundBlendMode: "multiply",
+                  backgroundColor: "var(--brand-cream)",
                 }}
               >
                 <div className="flex h-full w-full items-center justify-center bg-brand-pink/25 p-8 text-8xl sm:text-9xl">
@@ -255,7 +253,7 @@ function Index() {
               </div>
             </div>
             <div className="max-w-lg lg:col-span-3">
-              <span className="font-mono text-xs uppercase tracking-widest text-brand-orange">
+              <span className="font-mono text-xs uppercase tracking-widest text-brand-orange-ink">
                 Since 2019
               </span>
               <h2 className="mt-3 font-display text-4xl font-bold leading-none tracking-tight text-brand-ink sm:text-6xl">
