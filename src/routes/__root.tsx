@@ -83,7 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Hot Dogs & Donuts is a chunky, cheerful snack shop serving classic dogs, chili cheese dogs, and hand-glazed donuts. Order pickup or visit us daily.",
       },
-      { name: "theme-color", content: "#F6EED4" },
+      { name: "theme-color", content: "#F2B51D" },
       { property: "og:title", content: "Hot Dogs & Donuts | Snack Shop" },
       {
         property: "og:description",
