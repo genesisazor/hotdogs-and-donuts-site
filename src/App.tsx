@@ -1,26 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode, type InputHTMLAttributes } from "react";
 import { Menu, X, MapPin, Clock, Phone, Instagram, ArrowRight } from "lucide-react";
-import logo from "@/assets/hotdogs-donuts-sticker.png";
-import patternTile from "@/assets/pattern-tile.jpg";
-import itemClassic from "@/assets/item-classic-dog.jpg";
-import itemChili from "@/assets/item-chili-dog.jpg";
-import itemSprinkle from "@/assets/item-sprinkle-donut-cropped.jpg";
-import itemChoco from "@/assets/item-choco-donut.jpg";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Hot Dogs & Donuts | Snack Shop" },
-      { name: "description", content: "Classic dogs, chili cheese dogs, and hand-glazed donuts made fresh every day at Hot Dogs & Donuts." },
-      { property: "og:title", content: "Hot Dogs & Donuts | Snack Shop" },
-      { property: "og:description", content: "Classic dogs, chili cheese dogs, and hand-glazed donuts made fresh every day." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Index,
-});
+import logo from "./assets/hotdogs-donuts-sticker.png";
+import patternTile from "./assets/pattern-tile.jpg";
+import itemClassic from "./assets/item-classic-dog.jpg";
+import itemChili from "./assets/item-chili-dog.jpg";
+import itemSprinkle from "./assets/item-sprinkle-donut-cropped.jpg";
+import itemChoco from "./assets/item-choco-donut.jpg";
 
 const NAV = [
   { href: "#menu", label: "Menu" },
@@ -35,7 +20,7 @@ const ITEMS = [
   { img: itemChoco, name: "Choco Glaze", desc: "Belgian chocolate glaze, brioche dough", price: "4", tint: "bg-brand-secondary/25" },
 ];
 
-function Index() {
+export default function App() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -214,7 +199,7 @@ function Index() {
                       decoding="async"
                       width={800}
                       height={800}
-                      className="aspect-square w-full object-contain p-6 transition-transform duration-500 group-hover:scale-110"
+                      className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                   <div className="flex flex-1 items-start justify-between gap-3 p-4 sm:p-5">
@@ -374,9 +359,9 @@ function Info({
   label,
   children,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div className="flex gap-4">
@@ -400,7 +385,7 @@ function Row({ l, r }: { l: string; r: string }) {
   );
 }
 
-type FieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
+type FieldProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   id: string;
 };

@@ -1,54 +1,19 @@
-# Hotdogs and Donuts Site
+# Hot Dogs & Donuts
 
-Design and develop this website using a mobile-first approach. Mobile should be considered the primary experience, with layouts that progressively enhance for tablets and desktop screens. Every page and component must be fully responsive and provide an excellent user experience on devices ranging from 320px-wide phones to large desktop monitors.
+A playful, mobile-first website for a fictional snack shop serving classic dogs, chili cheese dogs, and hand-glazed donuts. Designed by Genesis Azor.
 
-Requirements:
+**Live site:** https://genesisazor.github.io/responsive-joy-zone/
 
- Mobile-first responsive design
+## Built with
 
- Touch-friendly buttons (minimum 44×44px tap targets)
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- Deployed to GitHub Pages with GitHub Actions
 
- Responsive navigation with a hamburger menu on mobile
+## Run locally
 
- Readable typography without zooming
-
- Fast loading on cellular connections
-
- Optimized images with lazy loading
-
- Flexible layouts using CSS Grid and Flexbox
-
- Responsive spacing and typography
-
- No horizontal scrolling at any screen size
-
- Smooth scrolling and subtle animations that don't hurt performance
-
- Sticky navigation bar
-
- Accessible color contrast and keyboard navigation
-
- Test and optimize for common breakpoints: 320px, 375px, 390px, 414px, 768px, 1024px, and 1440px.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://responsive-joy-zone.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/e7cda460-2686-4f48-a1c9-ec7cc039203a).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+npm install
 npm run dev
 ```
