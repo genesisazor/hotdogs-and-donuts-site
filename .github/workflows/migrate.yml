@@ -1,0 +1,26 @@
+name: One-time move off Lovable
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply migration if pending
+        run: |
+          if [ ! -f migrate.tgz ]; then echo "Nothing to migrate"; exit 0; fi
+          tar xzf migrate.tgz
+          xargs -a .migrate-delete.txt git rm -r -q --ignore-unmatch
+          rm -f migrate.tgz .migrate-delete.txt
+          git rm -q --cached --ignore-unmatch migrate.tgz
+          git config user.name "genesisazor"
+          git config user.email "genesisazor@users.noreply.github.com"
+          git add -A
+          git commit -m "Move site from Lovable to a plain Vite build for GitHub Pages"
+          git push
