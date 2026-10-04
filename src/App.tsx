@@ -2,10 +2,10 @@ import { useEffect, useState, type ReactNode, type InputHTMLAttributes } from "r
 import { Menu, X, MapPin, Clock, Phone, Instagram, ArrowRight } from "lucide-react";
 import logo from "./assets/hotdogs-donuts-sticker.png";
 import patternTile from "./assets/pattern-tile.jpg";
-import itemClassic from "./assets/item-classic-dog.jpg";
-import itemChili from "./assets/item-chili-dog.jpg";
-import itemSprinkle from "./assets/item-sprinkle-donut-cropped.jpg";
-import itemChoco from "./assets/item-choco-donut.jpg";
+import itemClassic from "./assets/item-classic-dog.png";
+import itemChili from "./assets/item-chili-dog.png";
+import itemSprinkle from "./assets/item-sprinkle-donut.png";
+import itemChoco from "./assets/item-choco-donut.png";
 
 const NAV = [
   { href: "#menu", label: "Menu" },
@@ -14,10 +14,10 @@ const NAV = [
 ];
 
 const ITEMS = [
-  { img: itemClassic, name: "Classic Dog", desc: "All-beef, snappy bun, yellow mustard zigzag", price: "6", tint: "bg-brand-orange/15" },
-  { img: itemChili, name: "Chili Cheese Dog", desc: "House chili, molten cheddar, crispy onions", price: "8", tint: "bg-brand-primary/15" },
-  { img: itemSprinkle, name: "Sprinkle Party", desc: "Vanilla glaze, rainbow sprinkles, pure joy", price: "4", tint: "bg-brand-pink/15" },
-  { img: itemChoco, name: "Choco Glaze", desc: "Belgian chocolate glaze, brioche dough", price: "4", tint: "bg-brand-secondary/25" },
+  { img: itemClassic, name: "Classic Dog", desc: "All-beef, snappy bun, yellow mustard zigzag", price: "6" },
+  { img: itemChili, name: "Chili Cheese Dog", desc: "House chili, molten cheddar, crispy onions", price: "8" },
+  { img: itemSprinkle, name: "Sprinkle Party", desc: "Vanilla glaze, rainbow sprinkles, pure joy", price: "4" },
+  { img: itemChoco, name: "Choco Glaze", desc: "Belgian chocolate glaze, brioche dough", price: "4" },
 ];
 
 export default function App() {
@@ -129,13 +129,13 @@ export default function App() {
             className="card-outline relative mx-auto max-w-6xl overflow-hidden px-5 py-12 sm:px-10 sm:py-16 lg:py-24"
             style={{
               backgroundImage: `url(${patternTile})`,
-              backgroundSize: "320px auto",
+              backgroundSize: "480px auto",
               backgroundRepeat: "repeat",
               backgroundColor: "var(--brand-cream)",
             }}
           >
             {/* Cream wash softens the original pink and white pattern without changing its colors. */}
-            <div className="pointer-events-none absolute inset-0 bg-brand-cream/45" />
+            <div className="pointer-events-none absolute inset-0 bg-brand-cream/60" />
             <div className="relative animate-fade-up mx-auto flex max-w-2xl flex-col items-center text-center">
               <img
                 src={logo}
@@ -191,7 +191,7 @@ export default function App() {
                   className="animate-fade-up card-outline group flex flex-col overflow-hidden"
                   style={{ animationDelay: `${i * 80}ms` }}
                 >
-                  <div className={`overflow-hidden border-b-2 border-brand-ink ${d.tint}`}>
+                  <div className={`overflow-hidden border-b-2 border-brand-ink bg-brand-cream`}>
                     <img
                       src={d.img}
                       alt={d.name}
@@ -199,7 +199,7 @@ export default function App() {
                       decoding="async"
                       width={800}
                       height={800}
-                      className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="aspect-square w-full object-contain transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                   <div className="flex flex-1 items-start justify-between gap-3 p-4 sm:p-5">
@@ -222,22 +222,8 @@ export default function App() {
           id="story"
           className="relative px-5 py-20 sm:px-8 sm:py-24"
         >
-          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-5 lg:gap-16">
-            <div className="lg:col-span-2">
-              <div
-                className="card-outline aspect-square w-full overflow-hidden"
-                style={{
-                  backgroundImage: `url(${patternTile})`,
-                  backgroundSize: "220px auto",
-                  backgroundColor: "var(--brand-cream)",
-                }}
-              >
-                <div className="flex h-full w-full items-center justify-center bg-brand-pink/25 p-8 text-8xl sm:text-9xl">
-                  🌭
-                </div>
-              </div>
-            </div>
-            <div className="max-w-lg lg:col-span-3">
+          <div className="mx-auto max-w-6xl">
+            <div className="mx-auto max-w-2xl text-center">
               <span className="font-mono text-xs uppercase tracking-widest text-brand-orange-ink">
                 Since 2019
               </span>
@@ -248,9 +234,9 @@ export default function App() {
               <p className="mt-5 text-pretty text-base font-medium leading-relaxed text-brand-ink/80 sm:text-lg">
                 We fell in love with the corner snack stands of our childhoods, the smell of a griddle, a warm glazed donut in wax paper. So we opened one. No fuss, just the two things we love most, made carefully every day.
               </p>
-              <div className="mt-8 grid grid-cols-3 gap-3 text-center sm:gap-4">
-                <Stat n="24" label="Dog styles" />
-                <Stat n="12" label="Donut flavors" />
+              <div className="mx-auto mt-8 grid max-w-lg grid-cols-3 gap-3 text-center sm:gap-4">
+                <Stat n="4" label="House favorites" />
+                <Stat n="15m" label="Pickup time" />
                 <Stat n="1" label="Tiny counter" />
               </div>
             </div>
@@ -273,9 +259,9 @@ export default function App() {
               </h2>
               <dl className="mt-8 space-y-6 text-base sm:text-lg">
                 <Info icon={<MapPin size={22} />} label="Address">
-                  1208 Sprinkle Lane
+                  Calle El Conde 208, Zona Colonial
                   <br />
-                  Los Angeles, CA 90026
+                  Santo Domingo, Dominican Republic
                 </Info>
                 <Info icon={<Clock size={22} />} label="Hours">
                   <div className="space-y-1">
@@ -285,8 +271,8 @@ export default function App() {
                   </div>
                 </Info>
                 <Info icon={<Phone size={22} />} label="Pickup">
-                  <a href="tel:+13235550129" className="underline underline-offset-4 hover:text-brand-orange">
-                    (323) 555-0129
+                  <a href="tel:+18095550129" className="underline underline-offset-4 hover:text-brand-orange">
+                    (809) 555-0129
                   </a>
                 </Info>
               </dl>
